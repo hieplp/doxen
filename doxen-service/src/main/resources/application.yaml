@@ -1,0 +1,27 @@
+doxen:
+  security:
+    jwt:
+      private-key: classpath:certs/private.pem
+      public-key: classpath:certs/public.pem
+      access-token-expiry: 900        # 15 minutes in seconds
+      refresh-token-expiry: 2592000   # 30 days in seconds
+      issuer: doxen-service
+
+spring:
+  application:
+    name: doxen-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/doxen
+    username: doxen
+    password: doxen
+    driver-class-name: org.postgresql.Driver
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      embedding:
+        model: text-embedding-3-small
+    vectorstore:
+      qdrant:
+        host: localhost
+        port: 6334
+        collection-name: doxen
