@@ -1,9 +1,9 @@
-package dev.hieplp.doxen.application.service.root.command;
+package dev.hieplp.doxen.application.service.root;
 
-import dev.hieplp.doxen.application.port.in.root.command.CreateRootUseCase;
-import dev.hieplp.doxen.application.port.out.root.account.command.ExistRootAccountPort;
-import dev.hieplp.doxen.application.port.out.root.account.command.SaveRootAccountPort;
-import dev.hieplp.doxen.application.port.out.root.token.command.MatchRootTokenPort;
+import dev.hieplp.doxen.application.port.in.root.CreateRootUseCase;
+import dev.hieplp.doxen.application.port.out.root.account.ExistRootAccountPort;
+import dev.hieplp.doxen.application.port.out.root.account.SaveRootAccountPort;
+import dev.hieplp.doxen.application.port.out.root.token.MatchRootTokenPort;
 import dev.hieplp.doxen.application.port.out.security.HashPasswordPort;
 import dev.hieplp.doxen.domain.constants.RootConstant;
 import dev.hieplp.doxen.domain.model.RootAccount;

@@ -1,4 +1,4 @@
-package dev.hieplp.doxen.application.port.in.libraries.command;
+package dev.hieplp.doxen.application.port.in.libraries;
 
 public interface CreateLibraryUseCase {
 }

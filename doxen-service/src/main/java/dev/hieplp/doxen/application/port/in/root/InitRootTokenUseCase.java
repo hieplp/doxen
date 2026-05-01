@@ -1,11 +1,8 @@
-package dev.hieplp.doxen.application.port.in.root.command;
+package dev.hieplp.doxen.application.port.in.root;
 
 public interface InitRootTokenUseCase {
 
     InitRootTokenResult init(InitRootTokenCommand command);
-
-    record InitRootTokenCommand() {
-    }
 
     sealed interface InitRootTokenResult {
         record Success(String token) implements InitRootTokenResult {
@@ -13,6 +10,9 @@ public interface InitRootTokenUseCase {
 
         record ExistedRoot() implements InitRootTokenResult {
         }
+    }
+
+    record InitRootTokenCommand() {
     }
 
 }

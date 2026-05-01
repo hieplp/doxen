@@ -1,4 +1,4 @@
-package dev.hieplp.doxen.application.port.out.root.account.command;
+package dev.hieplp.doxen.application.port.out.root.account;
 
 import dev.hieplp.doxen.domain.vo.UserId;
 

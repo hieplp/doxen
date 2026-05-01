@@ -1,8 +1,8 @@
-package dev.hieplp.doxen.application.service.root.command;
+package dev.hieplp.doxen.application.service.root;
 
-import dev.hieplp.doxen.application.port.in.root.command.InitRootTokenUseCase;
-import dev.hieplp.doxen.application.port.out.root.token.command.SaveRootTokenPort;
-import dev.hieplp.doxen.application.port.out.root.account.command.ExistRootAccountPort;
+import dev.hieplp.doxen.application.port.in.root.InitRootTokenUseCase;
+import dev.hieplp.doxen.application.port.out.root.account.ExistRootAccountPort;
+import dev.hieplp.doxen.application.port.out.root.token.SaveRootTokenPort;
 import dev.hieplp.doxen.domain.constants.RootConstant;
 import dev.hieplp.doxen.domain.vo.UserId;
 import lombok.RequiredArgsConstructor;
