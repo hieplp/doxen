@@ -1,17 +1,15 @@
 package dev.hieplp.doxen.domain.model;
 
 import dev.hieplp.doxen.domain.vo.UserId;
-import lombok.Builder;
 import lombok.Getter;
-
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Getter
-@Builder
-public class RootAccount {
+@SuperBuilder
+@NoArgsConstructor
+public class RootAccount extends AuditModel {
     private UserId userId;
     private String username;
     private String passwordHash;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

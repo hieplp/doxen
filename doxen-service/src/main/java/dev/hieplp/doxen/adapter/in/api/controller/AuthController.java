@@ -2,13 +2,16 @@ package dev.hieplp.doxen.adapter.in.api.controller;
 
 import dev.hieplp.doxen.adapter.in.api.dto.request.auth.LoginWithPasswordRequest;
 import dev.hieplp.doxen.adapter.in.api.dto.response.auth.LoginWithPasswordResponse;
+import dev.hieplp.doxen.adapter.in.api.dto.response.auth.RefreshAccessTokenResponse;
 import dev.hieplp.doxen.adapter.in.api.dto.response.base.ApiResponse;
 import dev.hieplp.doxen.adapter.in.api.mapper.auth.AuthRequestMapper;
 import dev.hieplp.doxen.adapter.in.api.mapper.auth.AuthResponseMapper;
 import dev.hieplp.doxen.adapter.in.api.statuscode.ErrorCode;
 import dev.hieplp.doxen.application.port.in.auth.LoginWithPasswordUseCase;
+import dev.hieplp.doxen.application.port.in.auth.RefreshAccessTokenUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,7 @@ public class AuthController {
 
     // UseCase
     private final LoginWithPasswordUseCase loginWithPasswordUseCase;
+    private final RefreshAccessTokenUseCase refreshAccessTokenUseCase;
 
     @PostMapping("/login")
     public ApiResponse<LoginWithPasswordResponse> loginWithPassword(@RequestBody LoginWithPasswordRequest request) {
@@ -42,5 +46,12 @@ public class AuthController {
                 yield new ApiResponse<>(ErrorCode.INVALID_CREDENTIALS);
             }
         };
+    }
+
+    @PostMapping("/refresh")
+    public ApiResponse<RefreshAccessTokenResponse> refreshAccessToken(Authentication authentication) {
+        final var command = new RefreshAccessTokenUseCase.RefreshAccessTokenCommand(authentication.getName());
+        final var result = refreshAccessTokenUseCase.refresh(command);
+        return ApiResponse.success(new RefreshAccessTokenResponse(result.accessToken(), result.accessTokenExpiresAt()));
     }
 }

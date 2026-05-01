@@ -27,6 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-flyway")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
 
     // Data and migrations
@@ -46,7 +47,7 @@ dependencies {
     // Annotation processing — order matters: Lombok must run before MapStruct
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-//    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2")
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
     annotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
@@ -55,8 +56,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-security-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-//    testAnnotationProcessor("org.projectlombok:lombok")
-//    testAnnotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2")
+    testAnnotationProcessor("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
     testAnnotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
 }
 
